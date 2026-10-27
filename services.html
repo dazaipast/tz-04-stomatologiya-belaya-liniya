@@ -83,42 +83,53 @@
       </div>
     </section>
     <section class="section">
-      <div class="wrap cards"><article class="service-card" id="consult">
+      <div class="wrap">
+        <div class="slider" data-slider aria-roledescription="карусель" aria-label="Услуги">
+      <div class="slider__viewport">
+        <div class="slider__track"><div class="slider__slide"><article class="service-card" id="consult">
               <button class="card-hit" type="button" data-event="service_view" data-service-name="Консультация"><span class="visually-hidden">Консультация</span></button>
               <h2>Консультация</h2>
               <p>Врач осматривает полость рта и спокойно объясняет, что видит. Если нужна другая услуга, её обсуждают отдельно.</p>
               <p class="muted">Длительность называют при записи</p>
               <p class="price">900 ₽</p>
               <a class="btn" href="contacts.html?service=consult" data-event="select_service" data-service-name="Консультация" data-price-from="900">Записаться на эту услугу</a>
-            </article><article class="service-card" id="hygiene">
+            </article></div><div class="slider__slide"><article class="service-card" id="hygiene">
               <button class="card-hit" type="button" data-event="service_view" data-service-name="Профессиональная гигиена"><span class="visually-hidden">Профессиональная гигиена</span></button>
               <h2>Профессиональная гигиена</h2>
               <p>Гигиенист проводит профессиональную гигиену. С 1 ноября 2026 гигиена вместе с консультацией стоит 3 900 ₽. По отдельности гигиена — 4 500 ₽, консультация — 900 ₽.</p>
               <p class="muted">Около 40 минут</p>
               <p class="price">4 500 ₽</p>
               <a class="btn" href="contacts.html?service=hygiene" data-event="select_service" data-service-name="Профессиональная гигиена" data-price-from="4500">Записаться на эту услугу</a>
-            </article><article class="service-card" id="treatment">
+            </article></div><div class="slider__slide"><article class="service-card" id="treatment">
               <button class="card-hit" type="button" data-event="service_view" data-service-name="Лечение кариеса"><span class="visually-hidden">Лечение кариеса</span></button>
               <h2>Лечение кариеса</h2>
               <p>Терапевт лечит кариес. Стоимость начинается от 5 200 ₽ и зависит от зуба. Точную сумму называют после осмотра.</p>
               <p class="muted">Зависит от зуба, срок называют после осмотра</p>
               <p class="price">от 5 200 ₽</p>
               <a class="btn" href="contacts.html?service=treatment" data-event="select_service" data-service-name="Лечение кариеса" data-price-from="5200">Записаться на эту услугу</a>
-            </article><article class="service-card" id="implant">
+            </article></div><div class="slider__slide"><article class="service-card" id="implant">
               <button class="card-hit" type="button" data-event="service_view" data-service-name="Имплантация под ключ"><span class="visually-hidden">Имплантация под ключ</span></button>
               <h2>Имплантация под ключ</h2>
               <p>Хирург-имплантолог ведёт имплантацию под ключ. Стоимость начинается от 48 000 ₽. Сколько будет визитов, врач говорит после консультации.</p>
               <p class="muted">Число визитов называет хирург-имплантолог</p>
               <p class="price">от 48 000 ₽</p>
               <a class="btn" href="contacts.html?service=implant" data-event="select_service" data-service-name="Имплантация под ключ" data-price-from="48000">Записаться на эту услугу</a>
-            </article><article class="service-card" id="braces">
+            </article></div><div class="slider__slide"><article class="service-card" id="braces">
               <button class="card-hit" type="button" data-event="service_view" data-service-name="Брекеты"><span class="visually-hidden">Брекеты</span></button>
               <h2>Брекеты</h2>
               <p>Ортодонт ведёт лечение на брекетах. Стоимость начинается от 65 000 ₽. Срок наблюдения называют на консультации.</p>
               <p class="muted">Срок наблюдения называет ортодонт</p>
               <p class="price">от 65 000 ₽</p>
               <a class="btn" href="contacts.html?service=braces" data-event="select_service" data-service-name="Брекеты" data-price-from="65000">Записаться на эту услугу</a>
-            </article></div>
+            </article></div></div>
+      </div>
+      <div class="slider__nav">
+        <button class="slider__arrow" type="button" data-slider-prev aria-label="Предыдущая услуга"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <p class="slider__count" data-slider-count aria-live="polite">1 из 5</p>
+        <button class="slider__arrow" type="button" data-slider-next aria-label="Следующая услуга"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+      </div>
     </section>
     <section class="section band" id="kids">
       <div class="wrap split">

@@ -219,6 +219,30 @@ def write_page(filename, title, description, body, active="", robots="index, fol
     (ROOT / filename).write_text(text, encoding="utf-8", newline="\n")
 
 
+def service_slider(slides):
+    items = "".join(f'<div class="slider__slide">{slide}</div>' for slide in slides)
+    arrow_prev = (
+        '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">'
+        '<path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" '
+        'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    arrow_next = (
+        '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">'
+        '<path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" '
+        'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    return f"""<div class="slider" data-slider aria-roledescription="карусель" aria-label="Услуги">
+      <div class="slider__viewport">
+        <div class="slider__track">{items}</div>
+      </div>
+      <div class="slider__nav">
+        <button class="slider__arrow" type="button" data-slider-prev aria-label="Предыдущая услуга">{arrow_prev}</button>
+        <p class="slider__count" data-slider-count aria-live="polite">1 из {len(slides)}</p>
+        <button class="slider__arrow" type="button" data-slider-next aria-label="Следующая услуга">{arrow_next}</button>
+      </div>
+    </div>"""
+
+
 def doctor_photo(doctor):
     alt = f"{doctor['name']}, {doctor['specialty']}. Изображение создано нейросетью."
     return f"""
@@ -281,7 +305,7 @@ def page_index():
           </div>
           <a class="btn btn--ghost" href="prices.html">Смотреть цены</a>
         </div>
-        <div class="cards">{''.join(cards)}</div>
+        {service_slider(cards)}
       </div>
     </section>
     <section class="section band">
@@ -349,7 +373,9 @@ def page_services():
       </div>
     </section>
     <section class="section">
-      <div class="wrap cards">{''.join(cards)}</div>
+      <div class="wrap">
+        {service_slider(cards)}
+      </div>
     </section>
     <section class="section band" id="kids">
       <div class="wrap split">
