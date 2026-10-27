@@ -1,0 +1,36 @@
+# Таблица и приёмник заявок
+
+## Таблица
+
+1. Создайте Google Таблицу и скопируйте её идентификатор из адреса: часть между `/d/` и `/edit`.
+2. В `apps-script/Code.gs` замените `ВСТАВЬТЕ_ID_ТАБЛИЦЫ` на этот идентификатор.
+3. Откройте Расширения → Apps Script, вставьте код и выберите часовой пояс `Europe/Moscow`.
+4. Запустите функцию `setup`. Она назовёт файл «BelayaLiniya — Leads», создаст листы `leads`, `dict` и `crm_import`, поставит списки, подсветку пустых обязательных ячеек и повторяющихся `request_id`.
+5. Откройте доступ на просмотр по ссылке для e-mail заказчика.
+
+Лист `crm_import` формулами делит имя на `first_name` и `last_name`, приводит телефон к `+7XXXXXXXXXX`, меняет статус на стадию из раздела 9.1 и собирает `deal_name` как «Имя — услуга — дата». Это подготовка данных из раздела 6.4. В HubSpot файл не загружается.
+
+Заголовки листа `leads`:
+
+```text
+request_id, created_at, name, phone, email, service, preferred_time, utm_source, utm_medium, utm_campaign, utm_content, status
+```
+
+`status` принимает только `new`, `contacted`, `appointment`, `visited`, `lost`. Приёмник сам ставит `new` и время. Значение статуса из браузера игнорируется.
+
+## Веб-приложение
+
+1. В Apps Script: Развернуть → Новое развёртывание → Тип «Веб-приложение».
+2. Запускать от своего имени. Доступ: «Все».
+3. Скопируйте URL, который заканчивается на `/exec`.
+4. Запишите его в проект:
+
+```text
+python tools/set_public_url.py https://имя.vercel.app G-ВАШИД https://script.google.com/macros/s/XXXX/exec
+```
+
+Форма отправляет JSON обычным POST без заголовка `application/json`, чтобы не было лишнего preflight. После ответа `{ "ok": true }` посетитель попадает на `thanks.html?id=REQ-…`, и только тогда уходит `generate_lead`.
+
+Повтор того же `request_id` не создаёт вторую строку и возвращает ошибку.
+
+Пустые метки на сервере заменяются так: `utm_source=direct`, `utm_medium=none`, `utm_campaign=not_set`, `utm_content=not_set`.
