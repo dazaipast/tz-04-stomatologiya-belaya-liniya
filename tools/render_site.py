@@ -90,6 +90,12 @@ def header(active):
         links.append(f'<a href="{href}"{current}>{label}</a>')
     return f"""
     <div class="header-wrap">
+      <div class="topbar">
+        <div class="wrap topbar__inner">
+          <span>Новоозёрск, ул.&nbsp;Садовая, д.&nbsp;3, пом.&nbsp;1</span>
+          <span>Пн–сб 09:00–21:00 · Вс 10:00–16:00</span>
+        </div>
+      </div>
       <header class="header">
         <a class="logo" href="index.html">
           <span class="logo__mark" aria-hidden="true"></span>
@@ -114,6 +120,7 @@ def footer():
     <footer class="footer">
       <div class="wrap footer-grid">
         <div>
+          <p class="footer-label">Клиника</p>
           <strong>Белая линия</strong>
           <p>{ADDRESS}</p>
           <p><a href="{esc(MAP)}" target="_blank" rel="noopener noreferrer" data-event="map_open" data-map-service="yandex">Открыть на Яндекс Картах</a></p>
@@ -121,13 +128,14 @@ def footer():
           <p><a href="files/license.pdf" data-event="license_open" data-page-section="footer">Открыть файл лицензии</a></p>
         </div>
         <div>
+          <p class="footer-label">Запись</p>
           <p>Пн–сб 09:00–21:00<br>Вс 10:00–16:00</p>
           <p><a href="tel:{PHONE_TEL}" data-event="contact_click" data-contact-type="phone">{PHONE_TEXT}</a></p>
           <p><a href="mailto:{EMAIL}" data-event="contact_click" data-contact-type="email">{EMAIL}</a></p>
           <p><a href="privacy.html">Политика конфиденциальности</a></p>
         </div>
         <div>
-          <p>Соцсети клиники</p>
+          <p class="footer-label">Соцсети</p>
           {social_links("footer")}
         </div>
       </div>
@@ -296,7 +304,7 @@ def page_index():
         <ol class="steps">{''.join(steps)}</ol>
       </div>
     </section>
-    <section class="section">
+    <section class="section section--cta">
       <div class="wrap">
         <div class="cta-band">
           <div>
