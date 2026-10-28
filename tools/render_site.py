@@ -174,7 +174,7 @@ def document(filename, title, description, body, active, robots="index, follow")
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=4">
   <script async src="https://www.googletagmanager.com/gtag/js?id={esc(GA_ID)}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -210,8 +210,8 @@ def document(filename, title, description, body, active, robots="index, follow")
   <script src="js/config.js" defer></script>
   <script src="js/utm.js" defer></script>
   <script src="js/analytics.js" defer></script>
-  <script src="js/main.js" defer></script>
-  <script src="js/form.js" defer></script>
+  <script src="js/main.js?v=2" defer></script>
+  <script src="js/form.js?v=2" defer></script>
 </body>
 </html>
 """
@@ -570,49 +570,50 @@ def page_contacts():
         <p class="lead">Администратор перезвонит и подтвердит время. Сведения о здоровье, жалобы и диагноз на сайте не собираем.</p>
       </div>
     </section>
-    <section class="section">
+    <section class="section band">
       <div class="wrap contact-grid">
         <form id="lead-form" novalidate>
           <div id="form-alert" class="form-alert" role="alert" hidden></div>
           <input type="hidden" name="request_id">
-          <div class="field" data-field="name">
-            <label for="name">Имя</label>
-            <input id="name" name="name" type="text" autocomplete="name" maxlength="60" aria-describedby="name-error" required>
-            <p class="field-error" id="name-error"></p>
-          </div>
-          <div class="field" data-field="phone">
-            <label for="phone">Телефон</label>
-            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" aria-describedby="phone-error" required>
-            <p class="field-error" id="phone-error"></p>
-          </div>
-          <div class="field" data-field="email">
-            <label for="email">E-mail, если удобно</label>
-            <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error">
-            <p class="field-error" id="email-error"></p>
-          </div>
-          <div class="field" data-field="service">
-            <label for="service">Услуга</label>
-            <select id="service" name="service" aria-describedby="service-error" required>{''.join(options)}</select>
-            <p class="field-error" id="service-error"></p>
-          </div>
-          <div class="field" data-field="preferred_time">
-            <label for="preferred_time">Удобное время</label>
-            <select id="preferred_time" name="preferred_time" aria-describedby="time-error" required>
-              <option value="">Выберите время</option>
-              <option value="morning">Утро</option>
-              <option value="day">День</option>
-              <option value="evening">Вечер</option>
-              <option value="weekend">Выходные</option>
-            </select>
-            <p class="field-error" id="time-error"></p>
-          </div>
-          <p class="muted">Клиника работает пн–сб 09:00–21:00, вс 10:00–16:00. Точный час подтвердит администратор.</p>
-          <div class="field" data-field="consent">
-            <label class="consent">
-              <input type="checkbox" name="consent" value="yes" aria-describedby="consent-error">
-              <span>Соглашаюсь на обработку персональных данных по <a href="privacy.html">политике конфиденциальности</a>.</span>
-            </label>
-            <p class="field-error" id="consent-error"></p>
+          <div class="form-grid">
+            <div class="field" data-field="name">
+              <label for="name">Имя</label>
+              <input id="name" name="name" type="text" autocomplete="name" maxlength="60" aria-describedby="name-error" required>
+              <p class="field-error" id="name-error"></p>
+            </div>
+            <div class="field" data-field="phone">
+              <label for="phone">Телефон</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" aria-describedby="phone-error" required>
+              <p class="field-error" id="phone-error"></p>
+            </div>
+            <div class="field field--wide" data-field="email">
+              <label for="email">E-mail, если удобно</label>
+              <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error">
+              <p class="field-error" id="email-error"></p>
+            </div>
+            <div class="field field--wide" data-field="service">
+              <label for="service">Услуга</label>
+              <select id="service" name="service" aria-describedby="service-error" required>{''.join(options)}</select>
+              <p class="field-error" id="service-error"></p>
+            </div>
+            <div class="field field--wide" data-field="preferred_time">
+              <span class="field-label" id="time-label">Удобное время</span>
+              <div class="choice-row" role="radiogroup" aria-labelledby="time-label" aria-describedby="time-error">
+                <label class="choice"><input type="radio" name="preferred_time" value="morning"><span>Утро</span></label>
+                <label class="choice"><input type="radio" name="preferred_time" value="day"><span>День</span></label>
+                <label class="choice"><input type="radio" name="preferred_time" value="evening"><span>Вечер</span></label>
+                <label class="choice"><input type="radio" name="preferred_time" value="weekend"><span>Выходные</span></label>
+              </div>
+              <p class="field-error" id="time-error"></p>
+            </div>
+            <p class="form-note field--wide">Клиника работает пн–сб 09:00–21:00, вс 10:00–16:00. Точный час подтвердит администратор.</p>
+            <div class="field field--wide" data-field="consent">
+              <label class="consent">
+                <input type="checkbox" name="consent" value="yes" aria-describedby="consent-error">
+                <span>Соглашаюсь на обработку персональных данных по <a href="privacy.html">политике конфиденциальности</a>.</span>
+              </label>
+              <p class="field-error" id="consent-error"></p>
+            </div>
           </div>
           <button class="btn" type="submit" data-event="cta_click" data-button-name="contacts_submit" data-page-section="contacts">Отправить заявку</button>
         </form>
@@ -714,13 +715,19 @@ def page_privacy():
 def page_404():
     body = """
     <section class="page-hero">
-      <div class="wrap">
-        <div class="rule" aria-hidden="true"></div>
-        <h1>Такой страницы нет</h1>
-        <p class="lead">Ссылка устарела или в адресе опечатка. Можно вернуться на главную или сразу оставить заявку.</p>
-        <div class="actions">
-          <a class="btn" href="index.html">На главную</a>
-          <a class="btn btn--ghost" href="contacts.html">Записаться</a>
+      <div class="wrap lost">
+        <figure class="lost__mark">
+          <img src="img/lost-tooth.webp" width="900" height="900" alt="Бирюзовый зуб с лупой ищет пропавшую страницу. Изображение создано нейросетью.">
+          <figcaption>Изображение создано нейросетью</figcaption>
+        </figure>
+        <div>
+          <p class="kicker">Ошибка 404</p>
+          <h1>Упс. Больной зуб не нашёлся</h1>
+          <p class="lead">Такой страницы на сайте нет. В адресе опечатка или ссылка уже устарела.</p>
+          <div class="actions">
+            <a class="btn" href="index.html">На главную</a>
+            <a class="btn btn--ghost" href="contacts.html">Записаться</a>
+          </div>
         </div>
       </div>
     </section>"""

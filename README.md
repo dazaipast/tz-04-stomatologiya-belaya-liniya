@@ -2,7 +2,7 @@
 
 | Что | Ссылка |
 | --- | --- |
-| Сайт на Vercel | https://PROJECT.vercel.app |
+| Сайт на Vercel | https://white-line-sooty.vercel.app |
 | Таблица заявок «BelayaLiniya — Leads» | вставить ссылку после создания таблицы |
 | Отчёт Looker Studio «БЕЛАЯ ЛИНИЯ — hygiene_nov_2026» | вставить ссылку после сборки отчёта |
 | Instagram | https://www.instagram.com/belaya_liniya_dent/ |
@@ -11,7 +11,7 @@
 | YouTube | https://www.youtube.com/@belaya_liniya_dent |
 | Reel с автоответами | вставить ссылку на Reel после публикации |
 
-Идентификатор ресурса GA4: `G-XXXXXXXXXX`
+Идентификатор ресурса GA4: `G-7BTPH14B6G`
 
 Доступ Viewer к ресурсу GA4 выдан: ___ (e-mail Заказчика)
 

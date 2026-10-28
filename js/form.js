@@ -36,17 +36,19 @@
     var field = form.querySelector("[data-field='" + fieldName + "']");
     if (!field) return;
     field.classList.add("is-invalid");
-    var input = field.querySelector("input, select");
+    field.querySelectorAll("input, select").forEach(function (input) {
+      input.setAttribute("aria-invalid", "true");
+    });
     var error = field.querySelector(".field-error");
-    if (input) input.setAttribute("aria-invalid", "true");
     if (error) error.textContent = message;
   }
 
   function clearErrors() {
     form.querySelectorAll(".is-invalid").forEach(function (field) {
       field.classList.remove("is-invalid");
-      var input = field.querySelector("input, select");
-      if (input) input.removeAttribute("aria-invalid");
+      field.querySelectorAll("input, select").forEach(function (input) {
+        input.removeAttribute("aria-invalid");
+      });
     });
     form.querySelectorAll(".field-error").forEach(function (node) {
       node.textContent = "";
