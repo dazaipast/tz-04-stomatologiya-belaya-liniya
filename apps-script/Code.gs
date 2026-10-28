@@ -1,4 +1,4 @@
-var SPREADSHEET_ID = "ВСТАВЬТЕ_ID_ТАБЛИЦЫ";
+var SPREADSHEET_ID = "1waEp18y3RePuCvSOQ4wpzFmeiah_zrHQ--enouP6oAk";
 
 var SERVICES = ["consult", "hygiene", "treatment", "implant", "braces", "kids"];
 var TIMES = ["morning", "day", "evening", "weekend"];
