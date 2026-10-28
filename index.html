@@ -58,10 +58,13 @@
       </div>
       <header class="header">
         <a class="logo" href="index.html">
-          <span class="logo__mark" aria-hidden="true"></span>
+          <svg class="logo__tooth" viewBox="0 0 48 60" aria-hidden="true">
+            <path fill="#12A3A0" d="M10 11C5 12 2 19 3.5 27 4.5 32 6.7 35 7.8 37.2 8.2 42 7.6 48 8.2 52 9.4 56.2 13.8 56.4 15 53.6 16 50.5 16.8 45 18 40.5 19.6 35.4 21.8 32.4 24 32.4 26.2 32.4 28.4 35.4 30 40.5 31.2 45 32 50.5 33 53.6 34.2 56.4 38.6 56.2 39.8 52 40.4 48 39.8 42 40.2 37.2 41.3 35 43.5 32 44.5 27 46 19 43 12 38 11 34 10.2 31 14.2 28.8 16.2 27.2 17.6 25.6 18.2 24 18.2 22.4 18.2 20.8 17.6 19.2 16.2 17 14.2 14 10.2 10 11z"/>
+            <rect fill="#fff" x="14.6" y="19.2" width="18.8" height="2.15"/>
+          </svg>
           <span>
             <span class="logo__name">Белая линия</span>
-            <span class="logo__sub">стоматология · Новоозёрск</span>
+            <span class="logo__sub">стоматологическая клиника</span>
           </span>
         </a>
         <input class="nav-check" id="nav-toggle" type="checkbox">
@@ -75,24 +78,203 @@
     </div>
   <main id="content">
     
-    <section class="hero">
-      <div class="wrap hero__grid">
-        <div>
-          <p class="kicker">Акция с 1 ноября 2026</p>
-          <h1>Профессиональная гигиена и консультация</h1>
-          <p class="price-xl">3&nbsp;900&nbsp;₽</p>
-          <p class="price-note">По отдельности гигиена стоит 4&nbsp;500&nbsp;₽, консультация — 900&nbsp;₽. Вместе по акции — 3&nbsp;900&nbsp;₽.</p>
-          <p class="lead">Клиника «Белая линия» на Садовой, 3. Пять кресел, девять врачей, работаем с 2020 года.</p>
-          <div class="actions">
-            <a class="btn" href="contacts.html?service=hygiene" data-event="cta_click" data-button-name="hero_promo" data-page-section="hero">Записаться на акцию</a>
-            <a class="btn btn--ghost" href="tel:+79004040440" data-event="contact_click" data-contact-type="phone">Позвонить</a>
-          </div>
+    <section class="hero hero--doctors">
+      <div class="wrap">
+        <div class="hero-intro">
+          <p class="kicker">Акция с 1 ноября 2026 · гигиена и консультация 3&nbsp;900&nbsp;₽</p>
+          <h1>Запишитесь к врачу</h1>
+          <p class="lead">Листайте карточки: стаж, диплом, рекомендация и приёмы этого врача. Запись на карточке. Портреты созданы нейросетью.</p>
         </div>
-        <ul class="fact-list">
-          <li><strong>Пн–сб 09:00–21:00</strong><span>Воскресенье 10:00–16:00</span></li>
-          <li><strong>5 кресел</strong><span>Терапевты, хирург-имплантолог, ортодонты, детский стоматолог и гигиенист</span></li>
-          <li><strong>Садовая, 3</strong><span>Новоозёрск, помещение 1</span></li>
-        </ul>
+        <div class="stage" data-stage tabindex="0" aria-roledescription="карусель" aria-label="Врачи">
+      <div class="stage__viewport">
+        <div class="stage__track"><article class="stage__slide" id="doc-sokolova" data-specialty="терапевт">
+              <figure class="stage__photo">
+                <img src="img/doctors/sokolova.webp" width="720" height="960" alt="Соколова Анна Викторовна, Терапевт. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Терапевт</p>
+                <h3>Соколова Анна Викторовна</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>8 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2016</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>На первом визите осматривает полость рта. Стоимость лечения кариеса называет после осмотра.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Осмотр полости рта и ответы на вопросы</span><span>900 ₽</span></li><li><span>Лечение кариеса, передний зуб</span><span>от 5 200 ₽</span></li><li><span>Лечение кариеса, жевательный зуб</span><span>от 5 200 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=consult" data-event="cta_click" data-button-name="doctor_sokolova" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-sokolova" data-event="doctor_view" data-doctor-id="sokolova" data-specialty="терапевт">Карточка врача</a>
+                </div>
+              </div>
+            </article><article class="stage__slide" id="doc-morozov" data-specialty="терапевт">
+              <figure class="stage__photo">
+                <img src="img/doctors/morozov.webp" width="720" height="960" alt="Морозов Илья Петрович, Терапевт. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Терапевт</p>
+                <h3>Морозов Илья Петрович</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>11 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2013</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>Ведёт приём терапевта и повторные обращения. Точную сумму лечения называет после осмотра.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Приём врача-терапевта</span><span>900 ₽</span></li><li><span>Лечение одного зуба</span><span>от 5 200 ₽</span></li><li><span>Повторное обращение по кариесу</span><span>от 5 200 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=consult" data-event="cta_click" data-button-name="doctor_morozov" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-morozov" data-event="doctor_view" data-doctor-id="morozov" data-specialty="терапевт">Карточка врача</a>
+                </div>
+              </div>
+            </article><article class="stage__slide" id="doc-kuznetsova" data-specialty="терапевт">
+              <figure class="stage__photo">
+                <img src="img/doctors/kuznetsova.webp" width="720" height="960" alt="Кузнецова Мария Сергеевна, Терапевт. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Терапевт</p>
+                <h3>Кузнецова Мария Сергеевна</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>6 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2018</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>Отдельный визит перед лечением кариеса — это осмотр. Дальше обсуждают уже сам зуб.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Отдельный визит перед лечением кариеса</span><span>900 ₽</span></li><li><span>Лечение кариеса, передний зуб</span><span>от 5 200 ₽</span></li><li><span>Повторный визит</span><span>900 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=consult" data-event="cta_click" data-button-name="doctor_kuznetsova" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-kuznetsova" data-event="doctor_view" data-doctor-id="kuznetsova" data-specialty="терапевт">Карточка врача</a>
+                </div>
+              </div>
+            </article><article class="stage__slide" id="doc-volkov" data-specialty="терапевт">
+              <figure class="stage__photo">
+                <img src="img/doctors/volkov.webp" width="720" height="960" alt="Волков Артём Николаевич, Терапевт. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Терапевт</p>
+                <h3>Волков Артём Николаевич</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>14 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2010</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>Начинает с осмотра и ответов на вопросы. Лечение кариеса назначает только после этого.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Осмотр и ответы на вопросы</span><span>900 ₽</span></li><li><span>Лечение кариеса, жевательный зуб</span><span>от 5 200 ₽</span></li><li><span>Повторное обращение по кариесу</span><span>от 5 200 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=consult" data-event="cta_click" data-button-name="doctor_volkov" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-volkov" data-event="doctor_view" data-doctor-id="volkov" data-specialty="терапевт">Карточка врача</a>
+                </div>
+              </div>
+            </article><article class="stage__slide" id="doc-lebedev" data-specialty="хирург-имплантолог">
+              <figure class="stage__photo">
+                <img src="img/doctors/lebedev.webp" width="720" height="960" alt="Лебедев Кирилл Андреевич, Хирург-имплантолог. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Хирург-имплантолог</p>
+                <h3>Лебедев Кирилл Андреевич</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>12 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2012</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>Сначала консультация. Число визитов по имплантации называет после неё.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Консультация до имплантации</span><span>900 ₽</span></li><li><span>Имплантация под ключ</span><span>от 48 000 ₽</span></li><li><span>Хирургический этап</span><span>входит в стоимость от 48 000 ₽</span></li><li><span>Ортопедический этап</span><span>входит в стоимость от 48 000 ₽</span></li><li><span>Наблюдение после имплантации</span><span>входит в стоимость от 48 000 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=implant" data-event="cta_click" data-button-name="doctor_lebedev" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-lebedev" data-event="doctor_view" data-doctor-id="lebedev" data-specialty="хирург-имплантолог">Карточка врача</a>
+                </div>
+              </div>
+            </article><article class="stage__slide" id="doc-orlova" data-specialty="ортодонт">
+              <figure class="stage__photo">
+                <img src="img/doctors/orlova.webp" width="720" height="960" alt="Орлова Дарья Игоревна, Ортодонт. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Ортодонт</p>
+                <h3>Орлова Дарья Игоревна</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>9 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2015</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>Срок наблюдения на брекетах называет на консультации. Повторные визиты входят в услугу.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Приём ортодонта</span><span>900 ₽</span></li><li><span>Брекеты</span><span>от 65 000 ₽</span></li><li><span>Наблюдение ортодонта</span><span>входит в стоимость от 65 000 ₽</span></li><li><span>Повторные визиты</span><span>входит в стоимость от 65 000 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=braces" data-event="cta_click" data-button-name="doctor_orlova" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-orlova" data-event="doctor_view" data-doctor-id="orlova" data-specialty="ортодонт">Карточка врача</a>
+                </div>
+              </div>
+            </article><article class="stage__slide" id="doc-belov" data-specialty="ортодонт">
+              <figure class="stage__photo">
+                <img src="img/doctors/belov.webp" width="720" height="960" alt="Белов Павел Дмитриевич, Ортодонт. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Ортодонт</p>
+                <h3>Белов Павел Дмитриевич</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>7 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2017</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>Перед брекетами проводит отдельный визит. Срок наблюдения называет на консультации.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Отдельный визит перед брекетами</span><span>900 ₽</span></li><li><span>Запись к ортодонту</span><span>от 65 000 ₽</span></li><li><span>Наблюдение ортодонта</span><span>входит в стоимость от 65 000 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=braces" data-event="cta_click" data-button-name="doctor_belov" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-belov" data-event="doctor_view" data-doctor-id="belov" data-specialty="ортодонт">Карточка врача</a>
+                </div>
+              </div>
+            </article><article class="stage__slide" id="doc-novikova" data-specialty="детский стоматолог">
+              <figure class="stage__photo">
+                <img src="img/doctors/novikova.webp" width="720" height="960" alt="Новикова Елена Олеговна, Детский стоматолог. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Детский стоматолог</p>
+                <h3>Новикова Елена Олеговна</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>10 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2014</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>Принимает детей 3–14 лет. Родитель остаётся рядом, после осмотра врач объясняет, что увидел.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Осмотр ребёнка 3–14 лет</span><span>1 200 ₽</span></li><li><span>Знакомство ребёнка с клиникой</span><span>1 200 ₽</span></li><li><span>Объяснение родителю после осмотра</span><span>входит в 1 200 ₽</span></li><li><span>Повторный детский приём</span><span>1 200 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=kids" data-event="cta_click" data-button-name="doctor_novikova" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-novikova" data-event="doctor_view" data-doctor-id="novikova" data-specialty="детский стоматолог">Карточка врача</a>
+                </div>
+              </div>
+            </article><article class="stage__slide" id="doc-smirnova" data-specialty="гигиенист">
+              <figure class="stage__photo">
+                <img src="img/doctors/smirnova.webp" width="720" height="960" alt="Смирнова Ольга Андреевна, Гигиенист. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">Гигиенист</p>
+                <h3>Смирнова Ольга Андреевна</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>5 лет</dd></div>
+                  <div><dt>Диплом</dt><dd>Стоматологический факультет, 2019</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>Профессиональная гигиена занимает около 40 минут. С 1 ноября 2026 вместе с консультацией — 3 900 ₽.</p>
+                <h4>Проводит</h4>
+                <ul class="ops"><li><span>Профессиональная гигиена, около 40 минут</span><span>4 500 ₽</span></li><li><span>Гигиена и консультация с 1 ноября 2026</span><span>3 900 ₽</span></li><li><span>Повторная запись на гигиену</span><span>4 500 ₽</span></li></ul>
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service=hygiene" data-event="cta_click" data-button-name="doctor_smirnova" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-smirnova" data-event="doctor_view" data-doctor-id="smirnova" data-specialty="гигиенист">Карточка врача</a>
+                </div>
+              </div>
+            </article></div>
+      </div>
+      <div class="stage__nav">
+        <button class="slider__arrow" type="button" data-stage-prev aria-label="Предыдущий врач"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <p class="slider__count" data-stage-count aria-live="polite">1 из 9</p>
+        <button class="slider__arrow" type="button" data-stage-next aria-label="Следующий врач"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
       </div>
     </section>
     <section class="section">
@@ -101,80 +283,34 @@
           <div>
             <div class="rule" aria-hidden="true"></div>
             <h2>Направления</h2>
-            <p>Шесть услуг клиники. Других названий и цен на сайте нет.</p>
+            <p>Шесть услуг. Фото и подробности — в разделе «Услуги».</p>
           </div>
-          <a class="btn btn--ghost" href="prices.html">Смотреть цены</a>
+          <a class="btn btn--ghost" href="services.html">Все услуги</a>
         </div>
-        <div class="slider" data-slider aria-roledescription="карусель" aria-label="Услуги">
-      <div class="slider__viewport">
-        <div class="slider__track"><div class="slider__slide"><a class="direction-card" href="services.html#consult" data-event="service_view" data-service-name="Консультация">
+        <div class="direction-list"><a class="direction-card" href="services.html#consult" data-event="service_view" data-service-name="Консультация">
               <h3>Консультация</h3>
               <p>Осмотр и ответы на вопросы</p>
               <span>900 ₽</span>
-            </a></div><div class="slider__slide"><a class="direction-card" href="services.html#hygiene" data-event="service_view" data-service-name="Профессиональная гигиена">
+            </a><a class="direction-card" href="services.html#hygiene" data-event="service_view" data-service-name="Профессиональная гигиена">
               <h3>Профессиональная гигиена</h3>
               <p>По акции с консультацией — 3 900 ₽</p>
               <span>4 500 ₽</span>
-            </a></div><div class="slider__slide"><a class="direction-card" href="services.html#treatment" data-event="service_view" data-service-name="Лечение кариеса">
+            </a><a class="direction-card" href="services.html#treatment" data-event="service_view" data-service-name="Лечение кариеса">
               <h3>Лечение кариеса</h3>
               <p>Приём терапевта</p>
               <span>от 5 200 ₽</span>
-            </a></div><div class="slider__slide"><a class="direction-card" href="services.html#implant" data-event="service_view" data-service-name="Имплантация под ключ">
+            </a><a class="direction-card" href="services.html#implant" data-event="service_view" data-service-name="Имплантация под ключ">
               <h3>Имплантация под ключ</h3>
               <p>Ведёт хирург-имплантолог</p>
               <span>от 48 000 ₽</span>
-            </a></div><div class="slider__slide"><a class="direction-card" href="services.html#braces" data-event="service_view" data-service-name="Брекеты">
+            </a><a class="direction-card" href="services.html#braces" data-event="service_view" data-service-name="Брекеты">
               <h3>Брекеты</h3>
               <p>Лечение у ортодонта</p>
               <span>от 65 000 ₽</span>
-            </a></div><div class="slider__slide"><a class="direction-card" href="services.html#kids" data-event="service_view" data-service-name="Детский приём">
+            </a><a class="direction-card" href="services.html#kids" data-event="service_view" data-service-name="Детский приём">
               <h3>Детский приём</h3>
               <p>Для детей 3–14 лет</p>
               <span>1 200 ₽</span>
-            </a></div></div>
-      </div>
-      <div class="slider__nav">
-        <button class="slider__arrow" type="button" data-slider-prev aria-label="Предыдущая услуга"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <p class="slider__count" data-slider-count aria-live="polite">1 из 6</p>
-        <button class="slider__arrow" type="button" data-slider-next aria-label="Следующая услуга"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="section band">
-      <div class="wrap">
-        <div class="section__head">
-          <div>
-            <div class="rule" aria-hidden="true"></div>
-            <h2>Врачи</h2>
-            <p>Имена вымышленные. Портреты созданы нейросетью и подписаны на карточках.</p>
-          </div>
-          <a class="btn btn--ghost" href="doctors.html">Все врачи</a>
-        </div>
-        <div class="doctor-grid"><a class="doctor-link" href="doctors.html#doc-sokolova" data-event="doctor_view" data-doctor-id="sokolova" data-specialty="терапевт">
-              
-      <img src="img/doctors/sokolova.webp" width="720" height="960" alt="Соколова Анна Викторовна, Терапевт. Изображение создано нейросетью." loading="lazy">
-      <p class="ai-note">Изображение создано нейросетью</p>
-              <h3>Соколова Анна Викторовна</h3>
-              <p>Терапевт · стаж 8 лет</p>
-            </a><a class="doctor-link" href="doctors.html#doc-lebedev" data-event="doctor_view" data-doctor-id="lebedev" data-specialty="хирург-имплантолог">
-              
-      <img src="img/doctors/lebedev.webp" width="720" height="960" alt="Лебедев Кирилл Андреевич, Хирург-имплантолог. Изображение создано нейросетью." loading="lazy">
-      <p class="ai-note">Изображение создано нейросетью</p>
-              <h3>Лебедев Кирилл Андреевич</h3>
-              <p>Хирург-имплантолог · стаж 12 лет</p>
-            </a><a class="doctor-link" href="doctors.html#doc-orlova" data-event="doctor_view" data-doctor-id="orlova" data-specialty="ортодонт">
-              
-      <img src="img/doctors/orlova.webp" width="720" height="960" alt="Орлова Дарья Игоревна, Ортодонт. Изображение создано нейросетью." loading="lazy">
-      <p class="ai-note">Изображение создано нейросетью</p>
-              <h3>Орлова Дарья Игоревна</h3>
-              <p>Ортодонт · стаж 9 лет</p>
-            </a><a class="doctor-link" href="doctors.html#doc-novikova" data-event="doctor_view" data-doctor-id="novikova" data-specialty="детский стоматолог">
-              
-      <img src="img/doctors/novikova.webp" width="720" height="960" alt="Новикова Елена Олеговна, Детский стоматолог. Изображение создано нейросетью." loading="lazy">
-      <p class="ai-note">Изображение создано нейросетью</p>
-              <h3>Новикова Елена Олеговна</h3>
-              <p>Детский стоматолог · стаж 10 лет</p>
             </a></div>
       </div>
     </section>

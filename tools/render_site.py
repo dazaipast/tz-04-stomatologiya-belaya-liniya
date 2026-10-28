@@ -98,10 +98,13 @@ def header(active):
       </div>
       <header class="header">
         <a class="logo" href="index.html">
-          <span class="logo__mark" aria-hidden="true"></span>
+          <svg class="logo__tooth" viewBox="0 0 48 60" aria-hidden="true">
+            <path fill="#12A3A0" d="M10 11C5 12 2 19 3.5 27 4.5 32 6.7 35 7.8 37.2 8.2 42 7.6 48 8.2 52 9.4 56.2 13.8 56.4 15 53.6 16 50.5 16.8 45 18 40.5 19.6 35.4 21.8 32.4 24 32.4 26.2 32.4 28.4 35.4 30 40.5 31.2 45 32 50.5 33 53.6 34.2 56.4 38.6 56.2 39.8 52 40.4 48 39.8 42 40.2 37.2 41.3 35 43.5 32 44.5 27 46 19 43 12 38 11 34 10.2 31 14.2 28.8 16.2 27.2 17.6 25.6 18.2 24 18.2 22.4 18.2 20.8 17.6 19.2 16.2 17 14.2 14 10.2 10 11z"/>
+            <rect fill="#fff" x="14.6" y="19.2" width="18.8" height="2.15"/>
+          </svg>
           <span>
             <span class="logo__name">Белая линия</span>
-            <span class="logo__sub">стоматология · Новоозёрск</span>
+            <span class="logo__sub">стоматологическая клиника</span>
           </span>
         </a>
         <input class="nav-check" id="nav-toggle" type="checkbox">
@@ -243,56 +246,94 @@ def service_slider(slides):
     </div>"""
 
 
-def doctor_photo(doctor):
+def doctor_photo(doctor, eager=False):
     alt = f"{doctor['name']}, {doctor['specialty']}. Изображение создано нейросетью."
+    loading = "eager" if eager else "lazy"
     return f"""
-      <img src="img/doctors/{doctor['id']}.webp" width="720" height="960" alt="{esc(alt)}" loading="lazy">
+      <img src="img/doctors/{doctor['id']}.webp" width="720" height="960" alt="{esc(alt)}" loading="{loading}">
       <p class="ai-note">Изображение создано нейросетью</p>"""
 
 
+def ops_list(doctor):
+    items = "".join(
+        f"<li><span>{esc(name)}</span><span>{money(price)}</span></li>"
+        for name, price in doctor["ops"]
+    )
+    return f'<ul class="ops">{items}</ul>'
+
+
+def doctor_stage(doctors):
+    slides = []
+    for doctor in doctors:
+        slides.append(
+            f"""<article class="stage__slide" id="doc-{doctor['id']}" data-specialty="{esc(doctor['key'])}">
+              <figure class="stage__photo">
+                <img src="img/doctors/{doctor['id']}.webp" width="720" height="960" alt="{esc(doctor['name'])}, {esc(doctor['specialty'])}. Изображение создано нейросетью." loading="lazy">
+                <figcaption>Изображение создано нейросетью</figcaption>
+              </figure>
+              <div class="stage__card">
+                <p class="kicker">{esc(doctor['specialty'])}</p>
+                <h3>{esc(doctor['name'])}</h3>
+                <dl class="stage__facts">
+                  <div><dt>Стаж</dt><dd>{esc(doctor['years'])}</dd></div>
+                  <div><dt>Диплом</dt><dd>{esc(doctor['edu'])}</dd></div>
+                </dl>
+                <p class="stage__advice"><span>Рекомендация</span>{esc(doctor['advice'])}</p>
+                <h4>Проводит</h4>
+                {ops_list(doctor)}
+                <div class="actions">
+                  <a class="btn" href="contacts.html?service={doctor['service']}" data-event="cta_click" data-button-name="doctor_{doctor['id']}" data-page-section="doctors">Записаться к врачу</a>
+                  <a class="btn btn--ghost" href="doctors.html#doc-{doctor['id']}" data-event="doctor_view" data-doctor-id="{doctor['id']}" data-specialty="{esc(doctor['key'])}">Карточка врача</a>
+                </div>
+              </div>
+            </article>"""
+        )
+    items = "".join(slides)
+    arrow_prev = (
+        '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">'
+        '<path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" '
+        'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    arrow_next = (
+        '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">'
+        '<path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" '
+        'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    return f"""<div class="stage" data-stage tabindex="0" aria-roledescription="карусель" aria-label="Врачи">
+      <div class="stage__viewport">
+        <div class="stage__track">{items}</div>
+      </div>
+      <div class="stage__nav">
+        <button class="slider__arrow" type="button" data-stage-prev aria-label="Предыдущий врач">{arrow_prev}</button>
+        <p class="slider__count" data-stage-count aria-live="polite">1 из {len(doctors)}</p>
+        <button class="slider__arrow" type="button" data-stage-next aria-label="Следующий врач">{arrow_next}</button>
+      </div>
+    </div>"""
+
+
 def page_index():
-    cards = []
+    links = []
     for service in SERVICES:
-        cards.append(
+        links.append(
             f"""<a class="direction-card" href="services.html#{service['id']}" data-event="service_view" data-service-name="{esc(service['name'])}">
               <h3>{esc(service['name'])}</h3>
               <p>{esc(service['summary'])}</p>
               <span>{service['price']}</span>
             </a>"""
         )
-    doctors = []
-    for doctor in DOCTORS:
-        if not doctor["home"]:
-            continue
-        doctors.append(
-            f"""<a class="doctor-link" href="doctors.html#doc-{doctor['id']}" data-event="doctor_view" data-doctor-id="{doctor['id']}" data-specialty="{esc(doctor['key'])}">
-              {doctor_photo(doctor)}
-              <h3>{esc(doctor['name'])}</h3>
-              <p>{esc(doctor['specialty'])} · стаж {esc(doctor['years'])}</p>
-            </a>"""
-        )
+    doctors = list(DOCTORS)
     steps = []
     for title, text in STEPS:
         steps.append(f"<li><h3>{esc(title)}</h3><p>{esc(text)}</p></li>")
     body = f"""
-    <section class="hero">
-      <div class="wrap hero__grid">
-        <div>
-          <p class="kicker">Акция с 1 ноября 2026</p>
-          <h1>Профессиональная гигиена и консультация</h1>
-          <p class="price-xl">3&nbsp;900&nbsp;₽</p>
-          <p class="price-note">По отдельности гигиена стоит 4&nbsp;500&nbsp;₽, консультация — 900&nbsp;₽. Вместе по акции — 3&nbsp;900&nbsp;₽.</p>
-          <p class="lead">Клиника «Белая линия» на Садовой, 3. Пять кресел, девять врачей, работаем с 2020 года.</p>
-          <div class="actions">
-            <a class="btn" href="contacts.html?service=hygiene" data-event="cta_click" data-button-name="hero_promo" data-page-section="hero">Записаться на акцию</a>
-            <a class="btn btn--ghost" href="tel:{PHONE_TEL}" data-event="contact_click" data-contact-type="phone">Позвонить</a>
-          </div>
+    <section class="hero hero--doctors">
+      <div class="wrap">
+        <div class="hero-intro">
+          <p class="kicker">Акция с 1 ноября 2026 · гигиена и консультация 3&nbsp;900&nbsp;₽</p>
+          <h1>Запишитесь к врачу</h1>
+          <p class="lead">Листайте карточки: стаж, диплом, рекомендация и приёмы этого врача. Запись на карточке. Портреты созданы нейросетью.</p>
         </div>
-        <ul class="fact-list">
-          <li><strong>Пн–сб 09:00–21:00</strong><span>Воскресенье 10:00–16:00</span></li>
-          <li><strong>5 кресел</strong><span>Терапевты, хирург-имплантолог, ортодонты, детский стоматолог и гигиенист</span></li>
-          <li><strong>Садовая, 3</strong><span>Новоозёрск, помещение 1</span></li>
-        </ul>
+        {doctor_stage(doctors)}
       </div>
     </section>
     <section class="section">
@@ -301,24 +342,11 @@ def page_index():
           <div>
             <div class="rule" aria-hidden="true"></div>
             <h2>Направления</h2>
-            <p>Шесть услуг клиники. Других названий и цен на сайте нет.</p>
+            <p>Шесть услуг. Фото и подробности — в разделе «Услуги».</p>
           </div>
-          <a class="btn btn--ghost" href="prices.html">Смотреть цены</a>
+          <a class="btn btn--ghost" href="services.html">Все услуги</a>
         </div>
-        {service_slider(cards)}
-      </div>
-    </section>
-    <section class="section band">
-      <div class="wrap">
-        <div class="section__head">
-          <div>
-            <div class="rule" aria-hidden="true"></div>
-            <h2>Врачи</h2>
-            <p>Имена вымышленные. Портреты созданы нейросетью и подписаны на карточках.</p>
-          </div>
-          <a class="btn btn--ghost" href="doctors.html">Все врачи</a>
-        </div>
-        <div class="doctor-grid">{''.join(doctors)}</div>
+        <div class="direction-list">{''.join(links)}</div>
       </div>
     </section>
     <section class="section">
@@ -354,13 +382,17 @@ def page_services():
         if service["id"] == "kids":
             continue
         cards.append(
-            f"""<article class="service-card" id="{service['id']}">
-              <button class="card-hit" type="button" data-event="service_view" data-service-name="{esc(service['name'])}"><span class="visually-hidden">{esc(service['name'])}</span></button>
-              <h2>{esc(service['name'])}</h2>
-              <p>{esc(service['text'])}</p>
-              <p class="muted">{esc(service['duration'])}</p>
-              <p class="price">{service['price']}</p>
-              <a class="btn" href="contacts.html?service={service['code']}" data-event="select_service" data-service-name="{esc(service['name'])}" data-price-from="{service['price_from']}">Записаться на эту услугу</a>
+            f"""<article class="service-card service-card--photo" id="{service['id']}">
+              <img class="service-card__bg" src="img/services/{service['id']}.webp" width="1400" height="1050" alt="{esc(service['name'])}. Изображение создано нейросетью.">
+              <div class="service-card__body">
+                <button class="card-hit" type="button" data-event="service_view" data-service-name="{esc(service['name'])}"><span class="visually-hidden">{esc(service['name'])}</span></button>
+                <p class="ai-note">Изображение создано нейросетью</p>
+                <h2>{esc(service['name'])}</h2>
+                <p>{esc(service['text'])}</p>
+                <p class="muted">{esc(service['duration'])}</p>
+                <p class="price">{service['price']}</p>
+                <a class="btn btn--light" href="contacts.html?service={service['code']}" data-event="select_service" data-service-name="{esc(service['name'])}" data-price-from="{service['price_from']}">Записаться на эту услугу</a>
+              </div>
             </article>"""
         )
     kids = service_by_id("kids")
@@ -388,11 +420,11 @@ def page_services():
           <p class="price">{kids['price']}</p>
           <a class="btn" href="contacts.html?service=kids" data-event="select_service" data-service-name="{esc(kids['name'])}" data-price-from="{kids['price_from']}">Записаться на эту услугу</a>
         </div>
-        <div class="info-card">
-          <h3>Кому подходит</h3>
-          <p>Детям 3–14 лет. Взрослый приём идёт по другим услугам: консультация, гигиена, лечение кариеса, имплантация и брекеты.</p>
+        <figure class="photo-panel">
+          <img src="img/services/kids.webp" width="1400" height="1050" alt="Детский приём: ребёнок в кресле, рядом родитель и врач. Изображение создано нейросетью.">
+          <figcaption>Изображение создано нейросетью</figcaption>
           <button class="card-hit" type="button" data-event="service_view" data-service-name="{esc(kids['name'])}"><span class="visually-hidden">Детский приём</span></button>
-        </div>
+        </figure>
       </div>
     </section>"""
     write_page(
@@ -412,30 +444,19 @@ def page_doctors():
         filters.append(
             f'<button type="button" data-event="doctor_filter" data-specialty="{esc(key)}" aria-pressed="{pressed}">{esc(label)}</button>'
         )
-    cards = []
-    for doctor in DOCTORS:
-        cards.append(
-            f"""<article class="doctor-card" id="doc-{doctor['id']}" data-doctor-card data-specialty="{esc(doctor['key'])}">
-              <button class="card-hit" type="button" data-event="doctor_view" data-doctor-id="{doctor['id']}" data-specialty="{esc(doctor['key'])}"><span class="visually-hidden">{esc(doctor['name'])}, {esc(doctor['specialty'])}</span></button>
-              {doctor_photo(doctor)}
-              <h2>{esc(doctor['name'])}</h2>
-              <p>{esc(doctor['specialty'])}</p>
-              <p>Стаж {esc(doctor['years'])}</p>
-              <p class="muted">{esc(doctor['edu'])}</p>
-              <a class="btn" href="contacts.html?service={doctor['service']}" data-event="cta_click" data-button-name="doctor_{doctor['id']}" data-page-section="doctors">Записаться к врачу</a>
-            </article>"""
-        )
     body = f"""
     <section class="page-hero">
       <div class="wrap">
         <div class="rule" aria-hidden="true"></div>
         <h1>Врачи</h1>
-        <p class="lead">Девять врачей: четыре терапевта, хирург-имплантолог, два ортодонта, детский стоматолог и гигиенист. Имена вымышленные, портреты созданы нейросетью.</p>
+        <p class="lead">Девять врачей: четыре терапевта, хирург-имплантолог, два ортодонта, детский стоматолог и гигиенист. Имена вымышленные, портреты созданы нейросетью. На карточке стаж, диплом, рекомендация и приёмы.</p>
         <div class="filters" role="group" aria-label="Фильтр по специальности">{''.join(filters)}</div>
       </div>
     </section>
     <section class="section">
-      <div class="wrap doctor-grid">{''.join(cards)}</div>
+      <div class="wrap">
+        {doctor_stage(DOCTORS)}
+      </div>
     </section>"""
     write_page(
         "doctors.html",
