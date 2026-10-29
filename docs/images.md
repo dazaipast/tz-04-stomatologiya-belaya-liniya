@@ -7,6 +7,14 @@
 | img/favicon.svg | Значок сайта, бирюзовая линия | Нарисован в коде |
 | img/og.jpg | Превью ссылки 1200×630 | Собрано программой из текста и фирменных цветов |
 | docs/qr-u-12.png | QR строки U-12 | Собрано программой из полной ссылки реестра |
+| img/services/consult.webp | Консультация | Нейросеть |
+| img/services/hygiene.webp | Профессиональная гигиена | Нейросеть |
+| img/services/treatment.webp | Лечение кариеса | Нейросеть |
+| img/services/implant.webp | Имплантация | Нейросеть |
+| img/services/braces.webp | Брекеты | Нейросеть |
+| img/services/kids.webp | Детский приём | Нейросеть |
+| docs/instagram/post-kids.png | Макет публикации о детском приёме | Собран программно из `img/services/kids.webp`, текста и фирменных цветов |
+| docs/instagram/post-hygiene.png | Макет публикации об акции | Собран программно из `img/services/hygiene.webp`, текста и фирменных цветов |
 | img/doctors/sokolova.webp | Портрет врача | Нейросеть, 19.0 КБ |
 | img/doctors/morozov.webp | Портрет врача | Нейросеть, 24.0 КБ |
 | img/doctors/kuznetsova.webp | Портрет врача | Нейросеть, 30.0 КБ |

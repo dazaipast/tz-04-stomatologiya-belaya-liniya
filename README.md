@@ -1,46 +1,58 @@
-# Белая линия — сайт клиники
+# Белая линия — сайт и сквозная аналитика записей
+
+Курсовая работа по дисциплине ОП.03 «Информационные технологии», ТЗ № ТЗ-04/2026.
+Исполнитель: Константинов Валерий Владимирович, группа РПО 25/9/3.
+
+Сайт акции «Профессиональная гигиена и консультация за 3 900 ₽»: посетитель приходит с меткой источника, заявка попадает в Google Таблицу, а на дашборде Looker Studio видно, какой канал привёл сеанс.
+
+![Схема работы](docs/scheme.png)
+
+## Ссылки
 
 | Что | Ссылка |
-| --- | --- |
-| Сайт на Vercel | https://white-line-sooty.vercel.app |
-| Таблица заявок «BelayaLiniya — Leads» | вставить ссылку после создания таблицы |
-| Отчёт Looker Studio «БЕЛАЯ ЛИНИЯ — hygiene_nov_2026» | вставить ссылку после сборки отчёта |
-| Instagram | https://www.instagram.com/belaya_liniya_dent/ |
-| ВКонтакте | https://vk.com/belaya_liniya_dent |
-| Telegram | https://t.me/belaya_liniya_dent |
-| YouTube | https://www.youtube.com/@belaya_liniya_dent |
-| Reel с автоответами | вставить ссылку на Reel после публикации |
+|---|---|
+| Сайт | https://white-line-sooty.vercel.app |
+| Таблица заявок | https://docs.google.com/spreadsheets/d/1waEp18y3RePuCvSOQ4wpzFmeiah_zrHQ--enouP6oAk |
+| Дашборд Looker Studio | https://lookerstudio.google.com/reporting/a5e677dc-d5a7-4691-b0ec-a3b9651745bc |
+| Instagram и автоответ | https://www.instagram.com/noearhiviste/ · «ЧЕК» https://www.instagram.com/p/DfFvPExo1Wi/ · «ДЕТИ» https://www.instagram.com/p/DfFvj4ZITQt/ |
+| ВКонтакте · Telegram · YouTube | https://clck.ru/3WkxBN · https://clck.ru/3WkxBP · https://white-line-sooty.vercel.app/checkup.html?utm_source=youtube&utm_medium=social&utm_campaign=hygiene_nov_2026&utm_content=shorts_brushing |
+| Описание работы | [docs/opisanie.md](docs/opisanie.md) |
+| Презентация к защите | [presentation/zashchita.pdf](presentation/zashchita.pdf) |
 
-Идентификатор ресурса GA4: `G-7BTPH14B6G`
+Ресурс GA4: `G-7BTPH14B6G`. В GA4 доступ только по почте, ссылки «для всех» нет: Viewer не выдан. Таблица и отчёт Looker Studio открыты всем, у кого есть ссылка, с правом читателя.
 
-Доступ Viewer к ресурсу GA4 выдан: ___ (e-mail Заказчика)
+Исходник слайдов: [presentation/zashchita.pptx](presentation/zashchita.pptx).
 
-Сайт — статические HTML, CSS и JavaScript без сборки. CRM HubSpot из раздела 9 не подключалась. Лист `crm_import` в таблице готовит данные для импорта, но в HubSpot они не загружаются.
+## Что сделано
 
-## Что уже сделано в коде
+| Часть | Результат |
+|---|---|
+| Сайт | 8 страниц и `404.html`, статический HTML, Vercel, Lighthouse мобильный: 76 / 95 / 100 |
+| GA4 | 20 событий (6 автоматических и 14 своих), 7 пользовательских параметров, ключевые: `generate_lead`, `contact_click`, `messenger_click` |
+| UTM | 12 ссылок в реестре, два поста Instagram, размеченные ссылки ВКонтакте, Telegram и YouTube, QR на листовку |
+| Заявки | форма → Apps Script → лист `leads`, проверка полей и повторов |
+| Instagram | ManyChat, две автоматизации: `ЧЕК` и `ДЕТИ` |
+| Отчёты | три исследования GA4 и отчёт Looker Studio из трёх страниц |
 
-- 8 страниц и `404.html`, шапка, подвал, предупреждение и лицензия.
-- События раздела 4, включая `map_open` и `license_open`, в `js/analytics.js`.
-- UTM сохраняются в `sessionStorage`. Реестр — `docs/utm.csv`, QR — `docs/qr-u-12.png`, афиша — `docs/afisha.pdf`.
-- Форма записи и приёмник `apps-script/Code.gs`.
-- Прайс, памятка и файл лицензии в `files/`.
+## Технологии
 
-## Что подключить своими аккаунтами
+HTML, CSS, JavaScript · Google Analytics 4 · Google Таблицы и Apps Script ·
+ManyChat · Looker Studio · GitHub и Vercel. Сайт создан с помощью Cursor
+(запросы — в [docs/prompts.md](docs/prompts.md)).
 
-1. Замените адрес и идентификатор GA4:
+## Структура
 
 ```text
-python tools/set_public_url.py https://имя.vercel.app G-ВАШИД
+index.html …         страницы сайта
+js/analytics.js      все события GA4
+apps-script/Code.gs  приёмник заявок
+docs/                описание, реестр UTM, события, записка, схема
+screens/             кадры-доказательства
+presentation/        презентация к защите
 ```
 
-2. Создайте ресурс GA4 по `docs/ga4.md`.
-3. Создайте таблицу и веб-приложение Apps Script по `docs/leads.md`, затем снова запустите команду выше и третьим аргументом передайте URL вида `https://script.google.com/macros/s/.../exec`.
-4. Опубликуйте ссылки из реестра и настройте ManyChat по `docs/utm.md` и `docs/manychat.md`.
-5. Соберите исследования GA4 и отчёт Looker Studio по `docs/looker-studio.md`. Снимки положите в `screens/`.
-6. После проверок заполните числа в `docs/report.md`.
+## Итог
 
-Локальный просмотр: `python -m http.server 8080`
+Не получилось: отдельные страницы ВКонтакте, Telegram и YouTube; учебный Instagram вместо belaya_liniya_dent; разные ответы на одном посте; ники партнёров; доступ Viewer в GA4 по почте; HubSpot. Проверка кнопок со второго аккаунта есть: 30 октября 2026 обе кнопки открыли сайт с метками.
 
-Не получилось: подключить живые кабинеты GA4, Google Таблицу, Apps Script, соцсети, ManyChat, Looker Studio и Vercel — для них нужен аккаунт исполнителя. CRM HubSpot не подключалась по решению исполнителя.
-
-Нейросеть использовалась для: структуры сайта, текстов, вёрстки, портретов врачей, PDF, QR и журнала в `docs/prompts.md`.
+Нейросеть использовалась для: структуры сайта, текстов, вёрстки, портретов врачей, PDF, QR, схемы и журнала запросов.

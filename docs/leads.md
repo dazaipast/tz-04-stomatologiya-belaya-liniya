@@ -23,11 +23,7 @@ request_id, created_at, name, phone, email, service, preferred_time, utm_source,
 1. В Apps Script: Развернуть → Новое развёртывание → Тип «Веб-приложение».
 2. Запускать от своего имени. Доступ: «Все».
 3. Скопируйте URL, который заканчивается на `/exec`.
-4. Запишите его в проект:
-
-```text
-python tools/set_public_url.py https://имя.vercel.app G-ВАШИД https://script.google.com/macros/s/XXXX/exec
-```
+4. Он уже записан в `js/config.js`. Форма берёт его оттуда.
 
 Форма отправляет JSON обычным POST без заголовка `application/json`, чтобы не было лишнего preflight. После ответа `{ "ok": true }` посетитель попадает на `thanks.html?id=REQ-…`, и только тогда уходит `generate_lead`.
 
